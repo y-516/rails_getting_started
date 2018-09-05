@@ -1,0 +1,34 @@
+<% if @contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @contact.errors.count %>件のエラーがあります。</h2>
+      <ul>
+      <% @contact.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+    <% end %>
+      </ul>
+    </div>
+<% end %>
+<h1>投稿画面</h1>
+<%= form_with(model: @contact, local:true,url: confirm_contacts_path) do |form|%>
+  <div>
+    <%=form.label:name %>
+  </div>
+  <div>
+    <%=form.text_field:name%>
+  </div>
+  <div>
+    <%=form.label:email %>
+  </div>
+  <div>
+    <%=form.text_field:email%>
+  </div>
+  <div>
+    <%=form.label:content %>
+  </div>
+  <div>
+    <%=form.text_field:content%>
+  </div>
+  <%= form.submit 'Create Contact'%>
+<%end%>
+
+  <%= link_to("一覧画面へ",contacts_path)%>

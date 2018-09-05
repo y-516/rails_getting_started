@@ -1,0 +1,21 @@
+<h1>一覧画面</h1>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Content</th>
+    </tr>
+    
+    <% @contact.each do |contact|%>
+    <tr>
+        <td><%= contact.name%></td>
+        <td><%= contact.email%></td>
+        <td><%= contact.content%></td>
+        <td><%= link_to "編集する",edit_contact_path(contact.id) %></td>
+        <td><%= link_to "削除する",contact_path(contact.id), method: :delete %></td>
+    </tr>
+    <%end%>
+</table>
+
+<%= link_to("投稿画面へ",new_contact_path)%> 
